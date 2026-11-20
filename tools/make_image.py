@@ -335,7 +335,7 @@ def draw_map(x, y, w, h, pins):
 # =====================================================================
 # header
 d.text(s(16, 10), "THE WORLD IN ONE DAY", font=font("arialbd.ttf", 14), fill=RED)
-d.text(s(W - 16, 10), "15 STORIES IN PICTURES · 16 MORE BELOW · ALL FROM THIS ONE DAY",
+d.text(s(W - 16, 10), "35 STORIES · EVERY CONTINENT · ALL FROM THIS ONE DAY",
        font=font("arialbd.ttf", 12), fill=INK, anchor="ra")
 d.line(s(16, 28, W - 16, 28), fill=INK, width=2 * S)
 d.text(s(14, 34), "Thursday 19 November 2026", font=font("georgiab.ttf", 57), fill=INK)
@@ -392,24 +392,26 @@ for n, (x, w, scene, tag, region, head, body) in enumerate(LEAD, start=1):
     d.text(s(x + 30, ty + 8), tag, font=font("arialbd.ttf", 11), fill=REGION[region], anchor="lm")
     yy = text_block(x + 8, ty + 20, head, "georgiab.ttf", 24 if n == 1 else 20, w - 16, 2, leading=1.08)
     text_block(x + 8, yy + 4, body, "arial.ttf", 12.5, w - 16, 4, fill="#33333A", leading=1.2)
+    src = ["AFP · BBC · AP", "ICJ · AFP", "Euronews · AFP"][n - 1]
+    d.text(s(x + w - 8, 441), "— " + src, font=font("georgia.ttf", 10), fill=MUTED, anchor="rd")
 
 # grid of twelve more stories
 GRID = [
-    (icon_tower_missile, "RIYADH · WAR", "MIDDLE EAST", "Houthi missiles damage Riyadh's PIF Tower; no injuries"),
-    (icon_tanker_fire, "HORMUZ · SHIPPING", "MIDDLE EAST", "Oil tanker catches fire after hitting a naval mine"),
-    (icon_expel, "MOGADISHU · DIPLOMACY", "AFRICA", "Somalia expels UAE ambassador over sovereignty"),
-    (icon_strike_building, "NYALA · SUDAN WAR", "AFRICA", "Army jets hit RSF intelligence HQ in Darfur"),
-    (icon_empty_chair, "ULAANBAATAR · POLITICS", "ASIA", "Mongolia's president Khürelsükh resigns; vote due in 4 months"),
-    (icon_house_fire, "GOPALGANJ · UNREST", "ASIA", "Arson in Bangladesh; 97 border-guard platoons deployed"),
-    (icon_cyclone, "BAY OF BENGAL · STORM", "ASIA", "Cyclone Akvan nears India's east coast; landfall due Friday"),
-    (icon_gavel_podium, "BELGRADE · POLITICS", "EUROPE", "Serbia's new parliament elects Čupić speaker and interim president"),
-    (icon_ballot, "EL SALVADOR · VOTE", "AMERICAS", "Bukele files to run for a third term in 2027"),
-    (icon_shield, "PORT-AU-PRINCE · GANGS", "AMERICAS", "Haitian police push into Martissant; 34 gang members killed, police say"),
-    (icon_ipo_chart, "NEW YORK · MARKETS", "AMERICAS", "Anthropic shares start trading after record IPO"),
-    (icon_gamepad, "WORLDWIDE · GAMES", "WORLDWIDE", "Grand Theft Auto VI goes on sale on PS5 and Xbox"),
+    (icon_tower_missile, "RIYADH · WAR", "MIDDLE EAST", "Houthi missiles damage Riyadh's PIF Tower; no injuries", "Al-Monitor"),
+    (icon_tanker_fire, "HORMUZ · SHIPPING", "MIDDLE EAST", "Tanker on fire after hitting a naval mine, Iran says", "Al Jazeera"),
+    (icon_expel, "MOGADISHU · DIPLOMACY", "AFRICA", "Somalia expels the UAE ambassador over sovereignty", "AP"),
+    (icon_strike_building, "NYALA · SUDAN WAR", "AFRICA", "Army jets hit RSF intelligence HQ in Darfur", "Sudan Tribune"),
+    (icon_empty_chair, "ULAANBAATAR · POLITICS", "ASIA", "Mongolia's president resigns; new vote within 4 months", "AP"),
+    (icon_house_fire, "GOPALGANJ · UNREST", "ASIA", "Arson in Bangladesh; 97 border-guard platoons sent", "Daily Star"),
+    (icon_cyclone, "BAY OF BENGAL · STORM", "ASIA", "Cyclone Akvan nears India's east coast", "IMD"),
+    (icon_gavel_podium, "BELGRADE · POLITICS", "EUROPE", "Serbia's Student List elects Čupić speaker and acting president", "Foreign Exchanges"),
+    (icon_ballot, "EL SALVADOR · VOTE", "AMERICAS", "Bukele files to run for a third term in 2027", "AP"),
+    (icon_shield, "PORT-AU-PRINCE · GANGS", "AMERICAS", "Police push into Martissant; 34 gang members killed, they say", "Haitian police"),
+    (icon_ipo_chart, "NEW YORK · MARKETS", "AMERICAS", "Anthropic shares start trading after record $107bn IPO", "Democracy Now"),
+    (icon_gamepad, "WORLDWIDE · GAMES", "WORLDWIDE", "Grand Theft Auto VI goes on sale on PS5 and Xbox", "Rockstar"),
 ]
 GW, GH, GG = 158, 146, 8.8
-for i, (icon, tag, region, head) in enumerate(GRID):
+for i, (icon, tag, region, head, src) in enumerate(GRID):
     col, row = i % 6, i // 6
     x, y = 16 + col * (GW + GG), 454 + row * (GH + 8)
     n = i + 4
@@ -420,7 +422,8 @@ for i, (icon, tag, region, head) in enumerate(GRID):
     d.ellipse(s(x + 6, y + 63, x + 20, y + 77), fill=colour)
     d.text(s(x + 13, y + 70), str(n), font=font("arialbd.ttf", 9), fill="white", anchor="mm")
     text_block(x + 24, y + 64, tag, "arialbd.ttf", 9.5, GW - 28, 1, fill=colour)
-    text_block(x + 7, y + 82, head, "arialbd.ttf", 13.5, GW - 13, 4, leading=1.13)
+    text_block(x + 7, y + 82, head, "arialbd.ttf", 13.5, GW - 13, 3, leading=1.13, min_size=12)
+    d.text(s(x + GW - 7, y + GH - 6), "— " + src, font=font("georgia.ttf", 10), fill=MUTED, anchor="rd")
 
 # bottom: map and the rest of the day
 BY = 762
@@ -453,18 +456,22 @@ ALSO = [
     ("Dakar", "Senegal's budget passed by decree for an IMF deal"),
     ("Peshawar", "Pakistan army says 22 militants killed in raids"),
     ("Riyadh", "Saudi oil exports at their highest since the war began"),
+    ("Taiz", "Yemen's army says 144 Houthi fighters killed or hurt"),
+    ("Warsaw", "Tusk mocks Trump calling Putin “my friend”"),
+    ("Qatar", "Signs a policing agreement with Pakistan"),
+    ("Washington", "NSA's internal network still down, NBC reports"),
 ]
 LX0 = 374
 d.text(s(LX0, BY), "ALSO ON THURSDAY 19 NOVEMBER", font=font("arialbd.ttf", 12), fill=INK)
 d.line(s(LX0, BY + 16, W - 16, BY + 16), fill=INK, width=S)
 colw = (W - 16 - LX0) / 2
 for i, (place, what) in enumerate(ALSO):
-    col, row = i // 8, i % 8
-    x, y = LX0 + col * (colw + 4), BY + 22 + row * 22.4
-    pf = font("arialbd.ttf", 12)
+    col, row = i // 10, i % 10
+    x, y = LX0 + col * (colw + 4), BY + 21 + row * 17.9
+    pf = font("arialbd.ttf", 11.5)
     d.text(s(x, y), place, font=pf, fill=INK)
     pw = d.textlength(place + " ", font=pf) / S
-    text_block(x + pw, y + 0.5, what, "arial.ttf", 11.5, colw - pw - 6, 1, fill="#33333A")
+    text_block(x + pw, y + 0.5, what, "arial.ttf", 11, colw - pw - 6, 1, fill="#33333A", min_size=9.5)
 
 # date check
 DY = 966

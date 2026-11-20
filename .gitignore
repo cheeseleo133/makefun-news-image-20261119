@@ -1,0 +1,9 @@
+# never commit keys or wallets
+*keypair*.json
+wallet.json
+.env
+.env.*
+credentials
+*.tar.gz
+out/
+__pycache__/

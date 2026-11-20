@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/news-image-20261119/cheeseleo133/makefun-news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![reward](https://make.fun/badge/news-image-20261119/cheeseleo133/makefun-news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 
-One image that sums up the world news of **Thursday 19 November 2026**: the Trump–Xi–Putin summit at APEC in Shenzhen as the lead, plus nine more stories from across the regions (the ICJ's Rohingya genocide ruling, the Houthi strike on Riyadh, a mined tanker near Hormuz, the Kerch Bridge, Somalia–UAE, Mongolia, El Salvador, Bangladesh and Lebanon).
+A one-page front page of the world news of **Thursday 19 November 2026**: three lead stories (the Trump–Xi–Putin summit in Shenzhen, the ICJ's Rohingya genocide ruling, the third strike on the Kerch Bridge), twelve more in pictures from every region, a strip of the day's numbers, a map with numbered pins, sixteen shorter items, and a date check naming the stories left out as other days' news.
 
 ![entry](entry.png)
 
